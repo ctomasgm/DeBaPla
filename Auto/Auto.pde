@@ -23,8 +23,10 @@ String UIText;
 ArrayList<String> devices = new ArrayList<String>();
 boolean isWatching =  false;
 String message = "", prevMessage="";
-PImage img, bg, car;
+PImage img, bg, car, fondTxt;
 boolean playSound=false, isDiferent=false;
+int tSize = 128;
+String[] alerta1 = {"", "", ""};
 
 void setup()
 {
@@ -35,8 +37,9 @@ void setup()
   accelerometer= new PVector();
   rotation = new PVector();
   img = loadImage("penguin.png");
-  bg = loadImage("road2.jpg");
+  bg = loadImage("road.jpg");
   car = loadImage("car.png");
+  fondTxt = loadImage("fondoTexto.png");
   size(1080, 1920); 
   orientation(PORTRAIT);
   background(0);
@@ -46,25 +49,46 @@ void setup()
   sensor.list();
   sensor.enableProximity();
   sensor.enableLight();
-  frameRate(15);
+  frameRate(30);
+  textFont(createFont("Candal.ttf", 40));
 }
 
 void draw()
 {
   background(50);
   background(bg);
-  imageMode(CORNERS);
+  imageMode(CORNERS); 
+  tint(255, 180);
+  image(fondTxt, 0, (2*height/3) -170, width, (2*height/3)+135);
+  tint(255, 170);
   image(img, 0, 0, width, height/2);
+  tint(255, 255);
   image(car, 0, height/2, width, height+500);
-  textSize(60);
-  textAlign(CENTER, CENTER);
-  text(message, 10, 30, width, height);
-  if (playSound && prevMessage!=message) {
+  textAlign(CENTER);
+  textSize(tSize);
+  while (textWidth(alerta1[0]) > width*0.75
+    || textWidth(alerta1[1]) > width*0.75
+    || textWidth(alerta1[2]) > width*0.75) {
+    tSize--;
+    textSize(tSize);
+  }
+
+  textSize(tSize);
+  fill(25, 140, 180);
+  text(alerta1[0], width/2, (2*height/3)-80);
+  fill(10, 100, 145);
+  text(alerta1[1], width/2, 2*height/3);
+  fill(8, 60, 130);
+  text(alerta1[2], width/2, (2*height/3)+80);
+  fill(0);
+  textSize(20);
+  text(message, 0, 3*height/4);
+  if (playSound && prevMessage!=alerta1[0]) {
     sin.play(700, 0.5);
     delay(250);
     sin.stop();
   } else {
     sin.stop();
   }
-  prevMessage=message;
+  prevMessage=alerta1[0];
 }    

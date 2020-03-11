@@ -30,28 +30,38 @@ void eventInTheCar(int event) {
   String alerta = ""; 
   switch(event) { 
   case Eventos.PROXIMITY_EVENT:
-    alerta = "POSIBLE INTRUSO HUSMEANDO";
+    alerta1[0]="Posible";
+    alerta1[1]="Intruso";
+    alerta1[2]="Husmeando";
     img = loadImage("intruso.png");  
     playSound = true;
+    alerta = ""; 
     break;
   case Eventos.TOUCH_EVENT:
-    alerta = "ALGUIEN INTENTA ABRIR O HA ROTO LOS CRISTALES";
+    alerta1[0]="Alguien intenta";
+    alerta1[1]="Abrir o ha roto";
+    alerta1[2]="los cristales";
     img = loadImage("broken.png");
     playSound = true;
+    alerta = ""; 
     break;
   case Eventos.CAR_DISTURBANCE_EVENT:
-    alerta = "PROBABLE IMPACTO O ROBO DE AUTOPARTES EXTERNAS";
+    alerta1[0]="Probable impacto";
+    alerta1[1]="o Robo de ";
+    alerta1[2]="Autopartes Externas";
     img = loadImage("choque.png");
     playSound = true;
     break;
   case Eventos.INTRUDER_EVENT:
-    alerta = "INTRUSO EN EL AUTO";
+    alerta1[0]="Intruso";
+    alerta1[1]="En el";
+    alerta1[2]="Auto";
     img = loadImage("cars.png");
     playSound = true;
+    alerta = ""; 
     break;
   case Eventos.GPS_EVENT:
-    alerta = "EL AUTOMOVIL ESTA EN MOVIMIENTO. POSIBLE ROBO"+"\nAccelerometer :" + "\n"
-      + "x: " + nfp(accelerometer.x, 1, 2) + "\n"
+    alerta = "x: " + nfp(accelerometer.x, 1, 2) + "\n"
       + "y: " + nfp(accelerometer.y, 1, 2) + "\n"
       + "z: " + nfp(accelerometer.z, 1, 2) + "\n"
       + "Rotation : " + "\n"
@@ -60,12 +70,18 @@ void eventInTheCar(int event) {
       + "z: " + nfp(rotation.z, 1, 2) + "\n"+"Latitude: " + latitude + "\n" + 
       "Longitude: " + longitude + "\n" +
       "Altitude: " + altitude + "\n";
+    alerta1[0]="El Automovil esta";
+    alerta1[1]="En movimiento.";
+    alerta1[2]="Posible Robo";
     img = loadImage("robo.jpg");
     playSound = true;
     break;
   default:
     alerta= "";
-    img=loadImage("penguin2.png");
+    alerta1[0] = "";
+    alerta1[1] = "";
+    alerta1[2] = "";
+    img=loadImage("penguin.png");
     background(180, 235, 175);
     playSound = false;
     break;
