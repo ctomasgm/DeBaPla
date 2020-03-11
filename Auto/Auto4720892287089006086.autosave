@@ -35,27 +35,26 @@ void setup()
   accelerometer= new PVector();
   rotation = new PVector();
   img = loadImage("penguin.png");
-  bg = loadImage("road2.jpg");
+  bg = loadImage("road.png");
   car = loadImage("car.png");
   size(1080, 1920); 
   orientation(PORTRAIT);
-  background(0);
-  fill(0);
+  background(70, 170, 25);
   stroke(255);
   sensor.start();
   sensor.list();
   sensor.enableProximity();
   sensor.enableLight();
-  frameRate(15);
+  frameRate(30);
 }
 
 void draw()
 {
-  background(50);
+  background(180, 235, 175);
   background(bg);
   imageMode(CORNERS);
   image(img, 0, 0, width, height/2);
-  image(car, 0, height/2, width, height+500);
+  image(car, 0, height/2, width, height);
   textSize(60);
   textAlign(CENTER, CENTER);
   text(message, 10, 30, width, height);

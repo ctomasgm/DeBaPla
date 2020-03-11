@@ -65,8 +65,7 @@ void eventInTheCar(int event) {
     break;
   default:
     alerta= "";
-    img=loadImage("penguin2.png");
-    background(180, 235, 175);
+    img=loadImage("penguin.png");
     playSound = false;
     break;
   }
@@ -86,13 +85,13 @@ class Eventos {
 void testSensorEvent() {
   if (touchIsStarted) {
     eventInTheCar(Eventos.TOUCH_EVENT);
-  } else if (accelerometer.x > 3.00 && accelerometer.z > 2.00 ||accelerometer.x < -3.00 && accelerometer.z > 2.00) {
+  } else if (accelerometer.x > 3.00 && accelerometer.z > 2.00) {
     eventInTheCar(Eventos.CAR_DISTURBANCE_EVENT);
   } else if (light > 1000.0) {
     eventInTheCar(Eventos.INTRUDER_EVENT);
   } else if (proximity <= 1.0) {
     eventInTheCar(Eventos.PROXIMITY_EVENT);
-  } else if (latitude != 0 && longitude != 0 && accelerometer.y < -2.00 && accelerometer.z > 0.00) {
+  } else if (latitude != 0 && longitude != 0 && accelerometer.y < -1.50 && accelerometer.z > 0.00) {
     eventInTheCar(Eventos.GPS_EVENT);
   } else {
     eventInTheCar(-1);
