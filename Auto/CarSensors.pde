@@ -19,14 +19,20 @@ void onLocationEvent(double _latitude, double _longitude, double _altitude) {
   altitude = _altitude;
   testSensorEvent();
 }
+void onGyroscopeEvent(float x, float y, float z) {
+  rotation.x = x;
+  rotation.y = y;
+  rotation.z = z;
+  testSensorEvent();
+}
 
 void eventInTheCar(int event) {
   if (event < 0 || event > 4) return;
-  String alerta = ""; // Compiler cries otherwise
+  String alerta = ""; 
   switch(event) { 
   case Eventos.PROXIMITY_EVENT:
     alerta = "POSIBLE INTRUSO HUSMEANDO";
-    img = loadImage("intruso.png");
+    img = loadImage("intruso.png");  
     break;
   case Eventos.TOUCH_EVENT:
     alerta = "ALGUIEN INTENTA ABRIR O HA ROTO LOS CRISTALES";
@@ -41,12 +47,21 @@ void eventInTheCar(int event) {
     img = loadImage("cars.png");
     break;
   case Eventos.GPS_EVENT:
-    alerta = "EL AUTOMOVIL ESTA EN MOVIMIENTO. POSIBLE ROBO";
+    alerta = "EL AUTOMOVIL ESTA EN MOVIMIENTO. POSIBLE ROBO"+"\nAccelerometer :" + "\n"
+    + "x: " + nfp(accelerometer.x, 1, 2) + "\n"
+    + "y: " + nfp(accelerometer.y, 1, 2) + "\n"
+    + "z: " + nfp(accelerometer.z, 1, 2) + "\n"
+    + "Rotation : " + "\n"
+    + "x: " + nfp(rotation.x, 1, 2) + "\n"
+    + "y: " + nfp(rotation.y, 1, 2) + "\n"
+    + "z: " + nfp(rotation.z, 1, 2) + "\n"+"Latitude: " + latitude + "\n" + 
+    "Longitude: " + longitude + "\n" +
+    "Altitude: " + altitude + "\n";
     img = loadImage("robo.jpg");
     break;
   }
   message = alerta;
-  println("Se ha levantado la siguiente alerta: " + alerta + "\n Pero no hay dispositivo que nos escuche.");
+  //println("Se ha levantado la siguiente alerta: " + alerta + "\n Pero no hay dispositivo que nos escuche.");
 }
 
 class Eventos {
@@ -67,7 +82,7 @@ void testSensorEvent() {
     eventInTheCar(Eventos.INTRUDER_EVENT);
   } else if (proximity == 0.0) {
     eventInTheCar(Eventos.PROXIMITY_EVENT);
-  } else if (latitude != 0 && longitude != 0 && altitude!=0 && accelerometer.x > 3.00 && accelerometer.z > 2.00) {
+  } else if (latitude != 0 && longitude != 0 && accelerometer.y < -2.00 && accelerometer.z > 0.00) {
     eventInTheCar(Eventos.GPS_EVENT);
   }
 }
