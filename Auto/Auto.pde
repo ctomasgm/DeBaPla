@@ -14,7 +14,7 @@ KetaiLocation location;
 KetaiCamera camera;
 Sound sound;
 SinOsc sin;
-SoundFile cuack;
+SoundFile honk;
 
 PVector accelerometer, rotation;
 float light, proximity; 
@@ -29,7 +29,7 @@ PImage img, bg, car, fondTxt;
 boolean playSound=false, isDiferent=false;
 int tSize = 128;
 String[] alerta1 = {"", "", ""};
-
+int currentEvent = -1;
 void setup()
 {
   sensor = new KetaiSensor(this);
@@ -42,7 +42,6 @@ void setup()
   bg = loadImage("road.jpg");
   car = loadImage("car.png");
   fondTxt = loadImage("fondoTexto.png");
-  size(1080, 1920); 
   orientation(PORTRAIT);
   background(0);
   fill(0);
@@ -53,7 +52,7 @@ void setup()
   sensor.enableLight();
   frameRate(30);
   textFont(createFont("Candal.ttf", 40));
-  cuack = new SoundFile(this, "duck.mp3");
+  honk = new SoundFile(this, "honk.mp3");
 }
 
 void draw()
@@ -86,15 +85,4 @@ void draw()
   fill(0);
   textSize(20);
   text(message, 0, 3*height/4);
-  if (playSound && prevMessage!=alerta1[0]) {
-    //sin.play(700, 0.5);
-    cuack.play();
-    delay(250);
-    //sin.stop();
-    cuack.stop();
-  } else {
-    //sin.stop();
-    cuack.stop();
-  }
-  prevMessage=alerta1[0];
 }    

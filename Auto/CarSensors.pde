@@ -34,7 +34,6 @@ void eventInTheCar(int event) {
     alerta1[1]="Intruso";
     alerta1[2]="Husmeando";
     img = loadImage("intruso.png");  
-    playSound = true;
     alerta = ""; 
     break;
   case Eventos.TOUCH_EVENT:
@@ -42,7 +41,6 @@ void eventInTheCar(int event) {
     alerta1[1]="Abrir o ha roto";
     alerta1[2]="los cristales";
     img = loadImage("broken.png");
-    playSound = true;
     alerta = ""; 
     break;
   case Eventos.CAR_DISTURBANCE_EVENT:
@@ -50,14 +48,12 @@ void eventInTheCar(int event) {
     alerta1[1]="o Robo de ";
     alerta1[2]="Autopartes Externas";
     img = loadImage("choque.png");
-    playSound = true;
     break;
   case Eventos.INTRUDER_EVENT:
     alerta1[0]="Intruso";
     alerta1[1]="En el";
     alerta1[2]="Auto";
     img = loadImage("cars.png");
-    playSound = true;
     alerta = ""; 
     break;
   case Eventos.GPS_EVENT:
@@ -74,7 +70,6 @@ void eventInTheCar(int event) {
     alerta1[1]="En movimiento.";
     alerta1[2]="Posible Robo";
     img = loadImage("robo.jpg");
-    playSound = true;
     break;
   default:
     alerta= "";
@@ -83,12 +78,14 @@ void eventInTheCar(int event) {
     alerta1[2] = "";
     img=loadImage("penguin.png");
     background(180, 235, 175);
-    playSound = false;
     break;
   }
+  if (currentEvent != event && event >= 0 & event <=4) {
+    honk.play();
+  }
+  currentEvent = event;
   message = alerta;
-  //println("Se ha levantado la siguiente alerta: " + alerta + "\n Pero no hay dispositivo que nos escuche.");
-}
+ }
 
 class Eventos {
   static final int PROXIMITY_EVENT = 0;
