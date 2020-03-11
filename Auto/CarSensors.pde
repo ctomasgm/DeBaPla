@@ -26,18 +26,23 @@ void eventInTheCar(int event) {
   switch(event) { 
   case Eventos.PROXIMITY_EVENT:
     alerta = "POSIBLE INTRUSO HUSMEANDO";
+    img = loadImage("intruso.png");
     break;
   case Eventos.TOUCH_EVENT:
     alerta = "ALGUIEN INTENTA ABRIR O HA ROTO LOS CRISTALES";
+    img = loadImage("broken.png");
     break;
   case Eventos.CAR_DISTURBANCE_EVENT:
     alerta = "PROBABLE IMPACTO O ROBO DE AUTOPARTES EXTERNAS";
+    img = loadImage("choque.png");
     break;
   case Eventos.INTRUDER_EVENT:
     alerta = "INTRUSO EN EL AUTO";
+    img = loadImage("cars.png");
     break;
   case Eventos.GPS_EVENT:
     alerta = "EL AUTOMOVIL ESTA EN MOVIMIENTO. POSIBLE ROBO";
+    img = loadImage("robo.jpg");
     break;
   }
   message = alerta;
@@ -58,7 +63,7 @@ void testSensorEvent() {
     eventInTheCar(Eventos.TOUCH_EVENT);
   } else if (accelerometer.x > 3.00 && accelerometer.z > 2.00) {
     eventInTheCar(Eventos.CAR_DISTURBANCE_EVENT);
-  } else if (light > 100.0) {
+  } else if (light > 80.0) {
     eventInTheCar(Eventos.INTRUDER_EVENT);
   } else if (proximity == 0.0) {
     eventInTheCar(Eventos.PROXIMITY_EVENT);
