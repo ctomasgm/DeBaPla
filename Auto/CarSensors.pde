@@ -79,7 +79,7 @@ void eventInTheCar(int event) {
   default:
     alerta= "";
     alerta1[0] = "";
-    alerta1[1] = "";
+    alerta1[1  ] = "";
     alerta1[2] = "";
     img=loadImage("penguin.png");
     background(180, 235, 175);

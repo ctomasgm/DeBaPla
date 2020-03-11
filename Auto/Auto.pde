@@ -6,6 +6,7 @@ import ketai.net.*;
 import ketai.sensors.*;
 import ketai.camera.*;
 import processing.sound.*;
+import cassette.audiofiles.SoundFile;
 
 KetaiSensor sensor;
 KetaiList connectionList;  
@@ -13,6 +14,7 @@ KetaiLocation location;
 KetaiCamera camera;
 Sound sound;
 SinOsc sin;
+SoundFile cuack;
 
 PVector accelerometer, rotation;
 float light, proximity; 
@@ -51,6 +53,7 @@ void setup()
   sensor.enableLight();
   frameRate(30);
   textFont(createFont("Candal.ttf", 40));
+  cuack = new SoundFile(this, "duck.mp3");
 }
 
 void draw()
@@ -84,11 +87,14 @@ void draw()
   textSize(20);
   text(message, 0, 3*height/4);
   if (playSound && prevMessage!=alerta1[0]) {
-    sin.play(700, 0.5);
+    //sin.play(700, 0.5);
+    cuack.play();
     delay(250);
-    sin.stop();
+    //sin.stop();
+    cuack.stop();
   } else {
-    sin.stop();
+    //sin.stop();
+    cuack.stop();
   }
   prevMessage=alerta1[0];
 }    
