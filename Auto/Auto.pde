@@ -51,7 +51,7 @@ void setup()
   sensor.list();
   sensor.enableProximity();
   sensor.enableLight();
-  frameRate(60);
+  frameRate(90);
   textFont(createFont("Candal.ttf", 40));
   honk = new SoundFile(this, "honk.mp3");
   camera = new KetaiCamera(this, width, height, 30);
