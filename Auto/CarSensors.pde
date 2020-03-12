@@ -33,7 +33,7 @@ void eventInTheCar(int event) {
     alerta1[0]="Posible";
     alerta1[1]="Intruso";
     alerta1[2]="Husmeando";
-    img = loadImage("intruso.png");  
+    img = loadImage("lego-robber.png");  
     alerta = ""; 
     break;
   case Eventos.TOUCH_EVENT:
