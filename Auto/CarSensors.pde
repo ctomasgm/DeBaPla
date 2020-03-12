@@ -85,7 +85,9 @@ void eventInTheCar(int event) {
   }
   currentEvent = event;
   message = alerta;
- }
+}
+
+
 
 class Eventos {
   static final int PROXIMITY_EVENT = 0;

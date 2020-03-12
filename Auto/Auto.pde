@@ -26,12 +26,13 @@ ArrayList<String> devices = new ArrayList<String>();
 boolean isWatching =  false;
 String message = "", prevMessage="";
 PImage img, bg, car, fondTxt;
-boolean playSound=false, isDiferent=false;
+boolean playSound=false, takePicture=false;
 int tSize = 128;
 String[] alerta1 = {"", "", ""};
 int currentEvent = -1;
 void setup()
 {
+  //requestPermission("android.permission.WRITE_EXTERNAL_STORAGE", "checkPermission");
   sensor = new KetaiSensor(this);
   location  = new KetaiLocation(this);
   sound = new Sound(this);
@@ -50,9 +51,11 @@ void setup()
   sensor.list();
   sensor.enableProximity();
   sensor.enableLight();
-  frameRate(30);
+  frameRate(60);
   textFont(createFont("Candal.ttf", 40));
   honk = new SoundFile(this, "honk.mp3");
+  camera = new KetaiCamera(this, width, height, 30);
+  camera.setCameraID(1);
 }
 
 void draw()
@@ -74,7 +77,6 @@ void draw()
     tSize--;
     textSize(tSize);
   }
-
   textSize(tSize);
   fill(25, 140, 180);
   text(alerta1[0], width/2, (2*height/3)-80);
@@ -83,6 +85,14 @@ void draw()
   fill(8, 60, 130);
   text(alerta1[2], width/2, (2*height/3)+80);
   fill(0);
-  textSize(20);
-  text(message, 0, 3*height/4);
+  textAlign(LEFT,BOTTOM);
+  textSize(35);
+  text(message,0,height);
+  if (currentEvent == 0) {
+    camera.start();
+    if (camera.isStarted()) {
+      camera.savePhoto();
+    }
+    camera.stop();
+  }
 }    
