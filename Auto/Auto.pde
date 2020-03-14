@@ -44,7 +44,6 @@ void setup()
   car = loadImage("car.png");
   fondTxt = loadImage("fondoTexto.png");
   orientation(PORTRAIT);
-  background(0);
   fill(0);
   stroke(255);
   sensor.start();
@@ -60,7 +59,6 @@ void setup()
 
 void draw()
 {
-  background(50);
   background(bg);
   imageMode(CORNERS); 
   tint(255, 180);
