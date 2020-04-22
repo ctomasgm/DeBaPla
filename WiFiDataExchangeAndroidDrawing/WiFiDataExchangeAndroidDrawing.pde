@@ -7,8 +7,8 @@ int x, y, px, py;
 
 void setup() {
   orientation(PORTRAIT);
-  oscP5 = new OscP5(this, 12001);  
-  remoteLocation = new NetAddress("192.168.1.84", 12000);  // 1
+  oscP5 = new OscP5(this, 12000);  
+  remoteLocation = new NetAddress("192.168.1.84", 1200);  // 1
   background(78, 93, 75);
 }
 

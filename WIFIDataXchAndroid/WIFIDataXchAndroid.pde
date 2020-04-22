@@ -10,7 +10,7 @@ NetAddress remoteLocation;
 float myAccelerometerX, myAccelerometerY, myAccelerometerZ;
 int x,y,p;
 String myIPAddress;
-String remoteAddress = "192.168.1.84";
+String remoteAddress = "192.168.1.84 ";
 
 void setup(){
   sensor = new KetaiSensor(this);
