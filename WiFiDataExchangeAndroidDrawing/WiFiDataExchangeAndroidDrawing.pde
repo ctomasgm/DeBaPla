@@ -8,7 +8,7 @@ int x, y, px, py;
 void setup() {
   orientation(PORTRAIT);
   oscP5 = new OscP5(this, 12000);  
-  remoteLocation = new NetAddress("192.168.1.84", 1200);  // 1
+  remoteLocation = new NetAddress("192.168.1.90", 12000);  // 1
   background(78, 93, 75);
 }
 
@@ -32,7 +32,7 @@ void draw() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
-  if (theOscMessage.checkTypetag("ii"))  
+  if (theOscMessage.checkTypetag("iii"))  
   {
     x =  theOscMessage.get(0).intValue();
     y =  theOscMessage.get(1).intValue();

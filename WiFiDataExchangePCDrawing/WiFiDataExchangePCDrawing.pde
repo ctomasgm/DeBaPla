@@ -6,10 +6,10 @@ NetAddress remoteLocation;
 int x, y, px, py;
 
 void setup() {
-  size(1440, 2560);
-  oscP5 = new OscP5(this, 12001);
-  remoteLocation = new NetAddress("192.168.1.66", 12000);  // 1
-  background(78, 93, 75);
+  size(1080, 1920);
+  oscP5 = new OscP5(this, 12000);
+  remoteLocation = new NetAddress("192.168.137.74", 12000);  // 1
+  background(30, 93, 120);
 }
 
 void draw() {

@@ -41,7 +41,7 @@ void draw(){
 }
 
 void oscEvent(OscMessage theOscMessage){
-  if(theOscMessage.checkTypetag("fff")){
+  if(theOscMessage.checkTypetag("ii")){
     x = theOscMessage.get(0).intValue();
     y = theOscMessage.get(1).intValue();
     p = theOscMessage.get(2).intValue();
@@ -55,7 +55,7 @@ void onAccelerometerEvent(float x, float y, float z){
 }
 
 void initNetworkConnection(){
-  oscP5 = new OscP5(this,2);
-  remoteLocation = new NetAddress(remoteAddress, 2);
+  oscP5 = new OscP5(this,1);
+  remoteLocation = new NetAddress(remoteAddress, 1);
   myIPAddress = KetaiNet.getIP();
 }

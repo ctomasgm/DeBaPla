@@ -7,18 +7,20 @@ float accelerometerX, accelerometerY, accelerometerZ;
 
 void setup (){ 
   size(1000,1000);
-  oscP5 = new OscP5(this,12000);
-  remoteLocation = new NetAddress("192.168.1.66",12000); 
+  oscP5 = new OscP5(this,2);
+  remoteLocation = new NetAddress("192.168.137.74",2); 
   textAlign(CENTER,CENTER);
-  textSize(24);
+  textSize(30);
 }
 void draw(){
+  background(30,70,120);
+  textAlign(CENTER,CENTER);
   text("Remote Accelerometer Info: " + "\n" + 
   "x " + nfp(accelerometerX,1,3) + "\n" +
   "y " + nfp(accelerometerY,1,3) + "\n" +
   "z " + nfp(accelerometerZ,1,3) + "\n" +
   "Local Info: \n" +
-  "mousePressed " + mousePressed, width/2,height/1);
+  "mousePressed " + mousePressed, width/2,height/2);
   
   OscMessage myMessage = new OscMessage("mouseStatus");
   myMessage.add(mouseX);
