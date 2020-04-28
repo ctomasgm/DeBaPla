@@ -2,8 +2,7 @@ import P5ireBase.library.*;
 P5ireBase fire;
 void setup() {
  size(400, 400);
- fire = new P5ireBase(this, "https://tmp1-
-ae346.firebaseio.com/");
+ fire = new P5ireBase(this, "https://tmp1ae346.firebaseio.com/");
 }
 void draw() {
  //if(mousePressed) {
